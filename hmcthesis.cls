@@ -17,10 +17,9 @@
 %   Department of Computer Science
 %   Department of Mathematics
 %
-% *** HMC STUDENTS SHOULD NOT CHANGE THE TYPESETTING PARAMETERS FOR ***
-% *** THEIR CLINIC REPORTS WITHOUT FIRST CHECKING WITH THEIR CLINIC ***
-% *** DIRECTOR.  STUDENTS WISHING TO ADD FEATURES SHOULD DO SO WITH *** 
-% *** OTHER FILES, NOT BY MODIFYING THIS FILE.                      *** 
+% *** HMC STUDENTS SHOULD NOT CHANGE THE TYPESETTING PARAMETERS FOR  ***
+% *** THEIR THESIS REPORTS.  STUDENTS WISHING TO ADD FEATURES SHOULD ***
+% *** DO SO WITH OTHER FILES, NOT BY MODIFYING THIS FILE.            *** 
 %
 % License:
 % 
@@ -43,11 +42,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2003/10/17 HMC Math Thesis class]
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
-\ProcessOptions\relax %% <-- Change this if we decide to declare some
-                      %%     options for this class!
-\LoadClass[11pt,oneside]{book}
+\ProvidesClass{hmcthesis}[2004/09/09 HMC Math Thesis class]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
@@ -67,6 +62,18 @@
 %%% Set the default typeface via a package.
 \RequirePackage{palatino}
 
+%%% Declare and set some options.
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+%\ExecuteOptions{}
+\ProcessOptions\relax %% <-- Change this if we decide to declare some
+                      %%     options for this class!
+
+
+
+%%% Load the book class with some default options.
+\LoadClass[11pt,openright]{book}
+
 
 %%% Include local configuration file, if any.
 \InputIfFileExists{hmcthesis.cfg}{}{}
@@ -74,8 +81,10 @@
 
 %%% Define some environments.
 \newenvironment{abstract}{\chapter*{Abstract}}{}
+\addcontentsline{toc}{chapter}{Abstract}}{}
 
 \newenvironment{acknowledgments}{\chapter*{Acknowledgments}}{}
+\addcontentsline{toc}{chapter}{Acknowledgments}}{}
 
 
 %%% Set the headers and footers.
@@ -213,7 +222,7 @@
 \setcounter{tocdepth}{1}
 
 
-%%% metafont font.  If logo not available, use the second form
+%%% Set Metafont font.  If logo not available, use the second form.
 %%%
 %%% \font\mffont=logosl10 scaled\magstep1
 \let\mffont=\sf
