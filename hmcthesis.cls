@@ -264,6 +264,12 @@
 \renewcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
 \let\@openbib@code\@empty
 
+\AtBeginDocument{\@ifundefined{bibsection}{}{%
+    % Handle natbib
+    \let\N@tbibsection\bibsection
+    \def\bibsection{\N@tbibsection\addcontentsline{toc}{chapter}{\bibname}}%
+}}
+
 \renewenvironment{theindex}
                {\if@twocolumn
                   \@restonecolfalse
