@@ -152,12 +152,12 @@
         \let\and\par
         \textbf{\@author}
         \par}%
-      \vfill
-      {\tiny
+      \vskip 2em
+      {\small
         \def\and{\!, Advisor\par\@sigline}
         \@sigline\@advisor, Advisor\par}
       \vskip 1.5em%
-      {\tiny
+      {\small
         \def\and{\!, Reader\par\@sigline}
         \@sigline\@reader, Reader\par}
       \vfill
@@ -169,7 +169,7 @@
 \end{center}
                                 %\par
     \@thanks
-    \vfil\null
+    \vfill\null
   \end{titlepage}%
   \setcounter{footnote}{0}%
   \global\let\thanks\relax
