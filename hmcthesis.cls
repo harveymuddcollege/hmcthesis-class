@@ -1,4 +1,8 @@
 % \iffalse meta-comment
+% 
+% hmcthesis.cls -- Harvey Mudd College Senior Thesis LaTeX Class File
+%
+% $Id$
 %
 % Copyright (C) 2003
 %
@@ -10,6 +14,11 @@
 %
 %   Department of Computer Science
 %   Department of Mathematics
+%
+% *** HMC STUDENTS SHOULD NOT CHANGE THE TYPESETTING PARAMETERS FOR ***
+% *** THEIR CLINIC REPORTS WITHOUT FIRST CHECKING WITH THEIR CLINIC ***
+% *** DIRECTOR.  STUDENTS WISHING TO ADD FEATURES SHOULD DO SO WITH *** 
+% *** OTHER FILES, NOT BY MODIFYING THIS FILE.                      *** 
 %
 % License:
 % 
@@ -30,11 +39,9 @@
 %
 % \fi
 %%
-%% Harvey Mudd College Clinic Report LaTeX class file.
-%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2003/04/30 HMC Math Thesis class]
+\ProvidesClass{hmcthesis}[2003/10/17 HMC Math Thesis class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax %% <-- Change this if we decide to declare some
                       %%     options for this class!
@@ -46,16 +53,22 @@
 
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
-\RequirePackage{amsfonts}
-\RequirePackage{bbold}
+\RequirePackage[psamsfonts]{amsfonts}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}
 \RequirePackage{booktabs}
 \RequirePackage{ifthen}
 \RequirePackage{graphics}
+\RequirePackage{fancyhdr}
+
 
 %%% Set the default typeface via a package.
 \RequirePackage{palatino}
+
+
+%%% Include local configuration file, if any.
+\InputIfFileExists{hmcthesis.cfg}{}{}
+
 
 %%% Define some environments.
 \newenvironment{abstract}{\chapter*{Abstract}}{}
@@ -63,52 +76,97 @@
 \newenvironment{acknowledgments}{\chapter*{Acknowledgments}}{}
 
 
+%%% Set the headers and footers.
+
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}{%
+  \fancyhf{} %% Clear all headers and footers.
+  \fancyhead[LE]{\textbf{\thepage{}}\hspace{1em}\nouppercase\leftmark}
+  \fancyhead[RE]{\chaptername\ \thechapter}
+  \fancyhead[LO]{Section \thesection}
+  \fancyhead[RO]{\nouppercase\rightmark\hspace{1em}\textbf{\thepage}}
+  \fancyfoot{}
+}
+
+%%% Redefine the \chaptermark and \sectionmark commands.  Note that
+%%%  this redefinition must occur after setting pagestyle to fancy.
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{%
+  \markright{#1}{}}
+
+\addtolength{\headwidth}{.5\marginparsep}
+\addtolength{\headwidth}{.5\marginparwidth}
+
+\fancypagestyle{plain}{%
+  \fancyhf{} %% Clear all headers and footers.
+%  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{empty}{%
+  \fancyhf{} %% Clear all headers and footers.
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{front}{%
+  \fancyhf{} %% Clear all headers and footers.
+  \fancyhead[LE]{\textbf{\thepage{}}\hspace{1em}\nouppercase\leftmark}
+  \fancyhead[RO]{\nouppercase\rightmark\hspace{1em}\textbf{\thepage}}
+}
+
+
+
 
 %%% Define the layout of the title page.
 
-
+\newcommand{\@sigline}{\vspace{2ex}\hbox to \textwidth{\hrulefill}\hfill}
 
   \renewcommand\maketitle{\begin{titlepage}%
       \let\footnotesize\small
       \let\footnoterule\relax
-                                %  \let \footnote \thanks
+   %  \let \footnote \thanks
       \let\thanks\ignoreit
-      \parindent0pt
-      \null\vfil
-      {\large \scalebox{0.55}{\includegraphics{hmclogo}} \\[0.5ex]%
-                                % Harvey Mudd College\\[0.5ex]%
-        Mathematics\par}%
-      \vskip 60\p@
-                                %\begin{center}%
+      \setlength{\topskip}{\z@}
+%      \setlength{\footskip}{\z@}
+%      \setlength{\footheight}{\z@}
+%      \setlength{\textheight}{\baselineskip*49+\topskip}
+%      \addtolength{\textheight}{\topmargin}
+%      \addtolength{\textheight}{\headheight}
+      \addtolength{\textheight}{2in}
+      \setlength{\topmargin}{\z@}
+      \setlength{\headheight}{\z@}
+%      \setlength{\textwidth}{432\p@}
+%\setmarginsrb{1.5in}{1in}{1.5in}{1in}{\z@}{\z@}{\z@}{\z@}
+      \parindent\z@
+%      \null\vfil
+      \begin{center}%
+      {\scalebox{0.55}{\includegraphics{hmcseal}}\par}%
+      \vfill
       {\LARGE \noindent\@title \par}%
-      \vskip 3em%
-      {\large \@date \par}%       % Set date in \large size.
-      \vskip 3em%
-      {\large
-        \lineskip .75em%
+      \vskip 2em
+      {\Large
         \let\and\par
-        \textbf{Author} \\[0.5ex]
-        \begin{tabular}[t]{l}%
-          \global\let\and\\%
-          \@author
-        \end{tabular}%
+        \textbf{\@author}
         \par}%
+      \vfill
+      {\tiny
+        \def\and{\!, Advisor\par\@sigline}
+        \@sigline\@advisor, Advisor\par}
       \vskip 1.5em%
-      {\large
-        \lineskip .75em%
-        \textbf{Advisor} \\[0.5ex]
-      \begin{tabular}[t]{c}%
-        \@advisor
-      \end{tabular}\par}%
-    \vskip 1.5em%
-    {\large
-      \lineskip .75em%
-      \textbf{Reader} \\[0.5ex]
-      \begin{tabular}[t]{c}%
-        \@reader
-      \end{tabular}\par}%
-    \vskip 1.5em%
-                                %\end{center}
+      {\tiny
+        \def\and{\!, Reader\par\@sigline}
+        \@sigline\@reader, Reader\par}
+      \vfill
+    {\large \@date\\[1em]
+\scalebox{0.55}{\includegraphics{hmclogo}}\\[0.5ex]%
+                                % Harvey Mudd College\\[0.5ex]%
+      Department of Mathematics
+        \par}%
+\end{center}
                                 %\par
     \@thanks
     \vfil\null
@@ -140,8 +198,111 @@
 
 \setcounter{tocdepth}{1}
 
+%%% Specify some details about the appearance of the table of contents.
+
+
+\renewcommand{\tableofcontents}{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \@mkboth{%
+           \contentsname}{\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+
+
+
+
+%%% Print only the chapter and section number in the Table of Contents.
+
+\setcounter{tocdepth}{1}
+
+
 %%% metafont font.  If logo not available, use the second form
 %%%
 %%% \font\mffont=logosl10 scaled\magstep1
 \let\mffont=\sf
+
+\renewcommand{\frontmatter}{%
+    \cleardoublepage
+  \@mainmatterfalse
+  \pagenumbering{roman}
+  \pagestyle{front}}
+
+\renewcommand{\mainmatter}{%
+    \cleardoublepage
+  \@mainmattertrue
+  \pagenumbering{arabic}%
+\pagestyle{fancy}}
+
+
+
+\renewenvironment{thebibliography}[1]
+     {\chapter*{\bibname
+        \@mkboth{\bibname}{\bibname}
+      \addcontentsline{toc}{chapter}{\bibname}}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\renewcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
+\let\@openbib@code\@empty
+
+\renewenvironment{theindex}
+               {\if@twocolumn
+                  \@restonecolfalse
+                \else
+                  \@restonecoltrue
+                \fi
+                \columnseprule \z@
+                \columnsep 35\p@
+                \twocolumn[\@makeschapterhead{\indexname}]%
+                \@mkboth{\indexname}%
+                        {\indexname}%
+                        \addcontentsline{toc}{chapter}{\indexname}%
+                \thispagestyle{plain}\parindent\z@
+                \parskip\z@ \@plus .3\p@\relax
+                \let\item\@idxitem}
+               {\if@restonecol\onecolumn\else\clearpage\fi}
+
+
+%%% Fix \cleardoublepage so it doesn't put headers on pages that are
+%%% supposed to be blank.
+
+\renewcommand*{\cleardoublepage}{%
+% original definition, see latex.ltx
+  \clearpage
+  \if@twoside
+     \ifodd\c@page
+  \else
+     \thispagestyle{empty}% added
+     \hbox{}\newpage
+     \if@twocolumn
+        \hbox{}\newpage
+     \fi
+     \fi
+  \fi
+}
+
+%% Ragged bottom is better than the alternative...
+
+\raggedbottom
+
+
 
