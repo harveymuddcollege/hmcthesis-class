@@ -80,10 +80,10 @@
 
 
 %%% Define some environments.
-\newenvironment{abstract}{\chapter*{Abstract}}{}
+\newenvironment{abstract}{\chapter*{Abstract}%
 \addcontentsline{toc}{chapter}{Abstract}}{}
 
-\newenvironment{acknowledgments}{\chapter*{Acknowledgments}}{}
+\newenvironment{acknowledgments}{\chapter*{Acknowledgments}%
 \addcontentsline{toc}{chapter}{Acknowledgments}}{}
 
 
