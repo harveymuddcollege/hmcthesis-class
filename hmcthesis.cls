@@ -4,6 +4,8 @@
 %
 % $Id$
 %
+% Tag: $Name$
+%
 % Copyright (C) 2003
 %
 % Claire Connelly <cmc@math.hmc.edu>
@@ -45,7 +47,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax %% <-- Change this if we decide to declare some
                       %%     options for this class!
-\LoadClass[11pt,openright]{book}
+\LoadClass[11pt,oneside]{book}
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
@@ -126,41 +128,30 @@
 \newcommand{\@sigline}{\vspace{2ex}\hbox to \textwidth{\hrulefill}\hfill}
 
   \renewcommand\maketitle{\begin{titlepage}%
+      \enlargethispage{1.5in}
       \let\footnotesize\small
       \let\footnoterule\relax
-   %  \let \footnote \thanks
       \let\thanks\ignoreit
-      \setlength{\topskip}{\z@}
-%      \setlength{\footskip}{\z@}
-%      \setlength{\footheight}{\z@}
-%      \setlength{\textheight}{\baselineskip*49+\topskip}
-%      \addtolength{\textheight}{\topmargin}
-%      \addtolength{\textheight}{\headheight}
-      \addtolength{\textheight}{2in}
-      \setlength{\topmargin}{\z@}
-      \setlength{\headheight}{\z@}
-%      \setlength{\textwidth}{432\p@}
-%\setmarginsrb{1.5in}{1in}{1.5in}{1in}{\z@}{\z@}{\z@}{\z@}
       \parindent\z@
-%      \null\vfil
+      \vspace*{-1in}
       \begin{center}%
       {\scalebox{0.55}{\includegraphics{hmcseal}}\par}%
-      \vfill
+      \vspace{\stretch{1.5}}
       {\LARGE \noindent\@title \par}%
       \vskip 2em
       {\Large
         \let\and\par
         \textbf{\@author}
         \par}%
-      \vskip 2em
+      \vspace{\stretch{1}}
       {\small
         \def\and{\!, Advisor\par\@sigline}
         \@sigline\@advisor, Advisor\par}
-      \vskip 1.5em%
+      \vspace{\stretch{.5}}
       {\small
         \def\and{\!, Reader\par\@sigline}
         \@sigline\@reader, Reader\par}
-      \vfill
+      \vspace{\stretch{3}}
     {\large \@date\\[1em]
 \scalebox{0.55}{\includegraphics{hmclogo}}\\[0.5ex]%
                                 % Harvey Mudd College\\[0.5ex]%
