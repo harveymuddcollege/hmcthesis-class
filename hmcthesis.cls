@@ -4,9 +4,7 @@
 %
 % $Id$
 %
-% Tag: $Name$
-%
-% Copyright (C) 2003
+% Copyright (C) 2003 - 2005
 %
 % Claire Connelly <cmc@math.hmc.edu>
 %              and 
@@ -42,7 +40,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2004/09/09 HMC Math Thesis class]
+\ProvidesClass{hmcthesis}[2005/04/13 HMC Math Thesis class]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
