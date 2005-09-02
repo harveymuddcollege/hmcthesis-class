@@ -1,0 +1,170 @@
+%%% Template File for Use with the hmcthesis.cls.
+%%%
+%%% C.M. Connelly <cmc@math.hmc.edu>
+%%%  $Id$
+%%%
+%%%  Tag: $Name$
+
+%%% Copyright (C) 2004 Claire M. Connelly and 
+%%% the Department of Mathematics, Harvey Mudd College.
+%%%
+%%% This file is part of the sample thesis provided to HMC
+%%% mathematics students and is based on the sample thesis's
+%%% master.tex file.  Please see that file for more information.
+
+%%% See the COPYING document, which should accompany this
+%%% distribution, for information about distribution and modification
+%%% of the document and its components.
+
+%%% Preamble
+
+\documentclass{hmcthesis}
+
+%%% Other packages needed by your document may be loaded here.
+%%% with the \usepackage{} command.
+
+%%% The optional \includeonly command allows you to specify the names
+%%% of chapters that you want to typeset.  It is useful for debugging
+%%% or for working intensely on one particular part of your document
+%%% when you don't want to take the time to retypeset the entire document.
+
+\includeonly{%
+%%% Chapter 1
+introduction
+%%% Chapter 2
+,structured-writing
+%%% Chapter 3
+,mathematics
+%%% Chapter 4
+,figs-and-tables
+%%% Chapter 5
+,typesetting
+%%% Chapter 6
+,tips-and-tricks
+%%% Chapter 7
+,resources
+%%% Chapter 8
+,books
+}
+
+
+%%% This optional command provides additional context around an error.
+%%% It can be helpful when tracking down a problem. 
+%\setcounter{errorcontextlines}{1000}
+
+%%% Information about this document.
+
+%% What is the title of your report?
+\title{Title of Your Thesis}
+
+%% Who are the authors of the report?  (Separate multiple names with \and.)
+\author{Your Name}
+
+%% What is your faculty advisor's name?  (Again, separate names with
+%% \and, if necessary.)
+\advisor{Advisor One \and Advisor Two}
+
+%% Second reader's name?  If you have a third or fourth reader, add
+%%% them separated by the \and command.
+\reader{Second Reader}
+
+%%% End of information section.
+
+%%% New commands and environments.
+
+%%% Define your own commands and environments here.  If you
+%%% have a lot of material here, you might want to consider splitting
+%%% the commands and environments into a separate ``style'' file that
+%%% you load with \usepackage.
+
+%%% The start of the document!
+
+\begin{document}
+\frontmatter
+\maketitle
+
+
+%%% Table of Contents, List of Figures, and List of Tables.
+%%% Comment out any you don't use.
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+
+%%% Acknowledgments
+\begin{acknowledgments}
+%%% Thank some people here, if you like.
+\end{acknowledgments}
+
+%%% End of front matter.
+
+%%% Beginnning of main matter.
+%%% The meat of your thesis goes here.
+\mainmatter
+
+
+%%% Content
+
+%%% Put each chapter in a separate file and include it here.  Chapter
+%%% names are, of course, examples only, but I do strongly recommend
+%%% that you give the chapter files meaningful names rather than call
+%%% them ``chapter1.tex'', ``chapter2.tex'', ... , ``chaptern.tex''.
+
+%%% Chapter 1
+\include{introduction}
+
+%%% Chapter 2
+\include{structured-writing}
+
+%%% Chapter 3
+
+\include{mathematics}
+
+%%% Chapter 4
+
+\include{figs-and-tables}
+
+%%% Chapter 5
+
+\include{typesetting}
+
+%%% Chapter 6
+
+\include{tips-and-tricks}
+
+%%% Chapter 7
+
+\include{resources}
+
+%%% Chapter 8
+
+\include{books}
+
+
+%%% Appendices
+%%% If you don't have any appendices, comment out the \appendix command.
+\appendix
+
+%\include{sampleclinicappen}
+
+
+%%% Back matter
+%%% Bibliography, index, and so forth.
+\backmatter
+
+
+%%% Bibliography
+
+\bibliographystyle{apalike}
+\bibliography{samplethesis}
+
+
+%%% Glossary or Index
+%%% If you were going to include a glossary or index in your document,
+%%% the relevant commands to include them would appear here.
+
+
+\end{document}
+
+
