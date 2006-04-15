@@ -164,8 +164,7 @@
     {\large \@date\\[1em]
 \scalebox{0.55}{\includegraphics{hmclogo}}\\[0.5ex]%
                                 % Harvey Mudd College\\[0.5ex]%
-      Department of Mathematics
-        \par}%
+      Department of~\@department\par}%
 \end{center}
                                 %\par
     \@thanks
@@ -191,6 +190,8 @@
 \def\@reader{\@latex@warning@no@line{No \noexpand\liaison given}}
 \def\advisor#1{\gdef\@advisor{#1}}
 \def\@advisor{\@latex@warning@no@line{No \noexpand\advisor given}}
+\def\department#1{\gdef\@department{#1}}
+\def\@department{\@latex@warning@no@line{No \noexpand\department given}}
 
 
 
