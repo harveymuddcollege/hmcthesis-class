@@ -161,7 +161,7 @@
         \def\and{\!, Reader\par\@sigline}
         \@sigline\@reader, Reader\par}
       \vspace{\stretch{3}}
-    {\large \@date\\[1em]
+    {\large \@thesismonth, \@thesisyear\\[1em]
 \scalebox{0.55}{\includegraphics{hmclogo}}\\[0.5ex]%
                                 % Harvey Mudd College\\[0.5ex]%
       Department of~\@department\par}%
@@ -180,7 +180,7 @@
   \setlength{\parindent}{0pt}
   \setlength{\parskip}{1em}
 
-  Copyright \copyright~2005 \@author.
+  Copyright \copyright~\@thesisyear{} \@author.
 
   \smallskip
 
@@ -209,6 +209,10 @@
 \def\@advisor{\@latex@warning@no@line{No \noexpand\advisor given}}
 \def\department#1{\gdef\@department{#1}}
 \def\@department{\@latex@warning@no@line{No \noexpand\department given}}
+\newcommand{\thesisyear}[1]{\gdef\@thesisyear{#1}}
+\newcommand{\@thesisyear}{\@latex@warning@no@line{No \noexpand\thesisyear given}}
+\newcommand{\thesismonth}[1]{\gdef\@thesismonth{#1}}
+\newcommand{\@thesismonth}{May}
 
 %%% Define the text to appear on the copyright page.
 \newcommand{\@defaultCopyrightText}{%
