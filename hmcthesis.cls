@@ -136,7 +136,7 @@
 
 \newcommand{\@sigline}{\vspace{2ex}\hbox to \textwidth{\hrulefill}\hfill}
 
-  \renewcommand\maketitle{\begin{titlepage}%
+\renewcommand\maketitle{\begin{titlepage}%
       \enlargethispage{1.5in}
       \let\footnotesize\small
       \let\footnoterule\relax
@@ -161,17 +161,33 @@
         \def\and{\!, Reader\par\@sigline}
         \@sigline\@reader, Reader\par}
       \vspace{\stretch{3}}
-    {\large \@date\\[1em]
+    {\large \@thesismonth, \@thesisyear\\[1em]
 \scalebox{0.55}{\includegraphics{hmclogo}}\\[0.5ex]%
                                 % Harvey Mudd College\\[0.5ex]%
-      Department of Mathematics
-        \par}%
+      Department of~\@department\par}%
 \end{center}
                                 %\par
     \@thanks
     \vfill\null
   \end{titlepage}%
   \setcounter{footnote}{0}%
+
+  %%% Define Copyright Page (appears on verso of title page).
+  \thispagestyle{empty}
+  \hbox{}
+  \vfill{}
+  \begin{small}
+  \setlength{\parindent}{0pt}
+  \setlength{\parskip}{1em}
+
+  Copyright \copyright~\@thesisyear{} \@author.
+
+  \smallskip
+
+  \@copyrighttext
+
+  \end{small}
+  \newpage
   \global\let\thanks\relax
   \global\let\maketitle\relax
   \global\let\@thanks\@empty
@@ -191,7 +207,25 @@
 \def\@reader{\@latex@warning@no@line{No \noexpand\liaison given}}
 \def\advisor#1{\gdef\@advisor{#1}}
 \def\@advisor{\@latex@warning@no@line{No \noexpand\advisor given}}
+\def\department#1{\gdef\@department{#1}}
+\def\@department{\@latex@warning@no@line{No \noexpand\department given}}
+\newcommand{\thesisyear}[1]{\gdef\@thesisyear{#1}}
+\newcommand{\@thesisyear}{\@latex@warning@no@line{No \noexpand\thesisyear given}}
+\newcommand{\thesismonth}[1]{\gdef\@thesismonth{#1}}
+\newcommand{\@thesismonth}{May}
 
+%%% Define the text to appear on the copyright page.
+\newcommand{\@defaultCopyrightText}{%
+
+The author grants Harvey Mudd College the nonexclusive right to make
+this work available for noncommercial, educational purposes, provided
+that this copyright statement appears on the reproduced materials and
+notice is given that the copying is by permission of the author.  To
+disseminate otherwise or to republish requires written permission from
+the author.  }
+
+\newcommand{\copyrighttext}[1]{\gdef\@copyrighttext{#1}}
+\def\@copyrighttext{\@defaultCopyrightText}
 
 
 %%% Print only the chapter and section number in the Table of Contents.
