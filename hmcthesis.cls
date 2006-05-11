@@ -46,6 +46,17 @@
 \setcounter{errorcontextlines}{25}
 
 
+%%% Declare and set some options.
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+%\ExecuteOptions{}
+\ProcessOptions\relax %% <-- Change this if we decide to declare some
+                      %%     options for this class!
+
+
+%%% Load the book class with some default options.
+\LoadClass[11pt,openright]{book}
+
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
 \RequirePackage[psamsfonts]{amsfonts}
@@ -60,20 +71,6 @@
 %%% Set the default typeface via a package.
 \RequirePackage{mathpazo}
 \RequirePackage[scaled=.95]{helvet}
-
-
-%%% Declare and set some options.
-
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
-%\ExecuteOptions{}
-\ProcessOptions\relax %% <-- Change this if we decide to declare some
-                      %%     options for this class!
-
-
-
-%%% Load the book class with some default options.
-\LoadClass[11pt,openright]{book}
-
 
 %%% Include local configuration file, if any.
 \InputIfFileExists{hmcthesis.cfg}{}{}
@@ -343,6 +340,4 @@ the author.  }
 %% Ragged bottom is better than the alternative...
 
 \raggedbottom
-
-
 
