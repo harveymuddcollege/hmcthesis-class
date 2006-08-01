@@ -60,6 +60,7 @@
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
 \RequirePackage[psamsfonts]{amsfonts}
+\RequirePackage{cmtty}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}
 \RequirePackage{booktabs}
