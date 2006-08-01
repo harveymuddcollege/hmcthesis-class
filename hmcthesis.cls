@@ -50,6 +50,12 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 %\ExecuteOptions{}
+\newif\if@sigpage
+\@sigpagefalse
+\DeclareOption{sigpage}{\@sigpagetrue}
+\ProcessOptions
+
+
 \ProcessOptions\relax %% <-- Change this if we decide to declare some
                       %%     options for this class!
 
@@ -134,6 +140,11 @@
 
 \newcommand{\@sigline}{\vspace{2ex}\hbox to \textwidth{\hrulefill}\hfill}
 
+\if@sigpage
+\else
+\renewcommand{\@sigline}{\relax}
+\fi
+
 \renewcommand\maketitle{\begin{titlepage}%
       \enlargethispage{1.5in}
       \let\footnotesize\small
@@ -144,6 +155,11 @@
       \begin{center}%
       {\scalebox{0.55}{\includegraphics{hmcseal}}\par}%
       \vspace{\stretch{1.5}}
+      \if@sigpage
+        \vspace{\stretch{1.5}}
+      \else
+        \vspace{\stretch{3}}
+      \fi
       {\LARGE \noindent\@title \par}%
       \vskip 2em
       {\Large
@@ -151,11 +167,16 @@
         \textbf{\@author}
         \par}%
       \vspace{\stretch{1}}
-      {\small
+      \if@sigpage
+        \vspace{\stretch{1}}
+      \else
+        \vspace{\stretch{4}}
+      \fi
+      {\if@sigpage\small\else\Large\fi
         \def\and{\!, Advisor\par\@sigline}
         \@sigline\@advisor, Advisor\par}
       \vspace{\stretch{.5}}
-      {\small
+      {\if@sigpage\small\else\Large\fi
         \def\and{\!, Reader\par\@sigline}
         \@sigline\@reader, Reader\par}
       \vspace{\stretch{3}}
