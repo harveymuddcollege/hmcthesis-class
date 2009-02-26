@@ -4,7 +4,7 @@
 %
 % $Id$
 %
-% Copyright (C) 2003 - 2005
+% Copyright (C) 2003--2009
 %
 % Claire Connelly <cmc@math.hmc.edu>
 %              and 
@@ -66,10 +66,10 @@
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
 \RequirePackage[psamsfonts]{amsfonts}
-\RequirePackage{cmtty}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}
-\RequirePackage{booktabs}
+\RequirePackage{booktabs}         % Publication-quality tables.
+\RequirePackage{natbib}           % Better bibliography handling.
 \RequirePackage{ifthen}
 \RequirePackage{graphics}
 \RequirePackage{fancyhdr}
@@ -79,8 +79,15 @@
 \RequirePackage{mathpazo}
 \RequirePackage[scaled=.95]{helvet}
 
+%%% Use Computer Modern Typewriter as the monospace typeface.
+\RequirePackage{cmtty}
+
+
 %%% Include local configuration file, if any.
 \InputIfFileExists{hmcthesis.cfg}{}{}
+
+%%% Set some defaults for bibliographic punctuation used by natbib.sty.
+\bibpunct[:~]{(}{)}{;}{a}{,}{,~} 
 
 
 %%% Define some environments.
