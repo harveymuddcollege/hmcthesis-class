@@ -76,11 +76,12 @@
 
 
 %%% Set the default typeface via a package.
+\RequirePackage[T1]{fontenc}
 \RequirePackage{mathpazo}
-\RequirePackage[scaled=.95]{helvet}
+\RequirePackage[scaled=.90]{helvet}
 
-%%% Use Computer Modern Typewriter as the monospace typeface.
-\RequirePackage{cmtty}
+%%% Use Latin Modern Typewriter as the monospace typeface.
+\renewcommand{\ttdefault}{lmtt}
 
 
 %%% Include local configuration file, if any.
