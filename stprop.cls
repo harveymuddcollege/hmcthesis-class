@@ -38,7 +38,6 @@
 %% Get some useful information about errors.
 \setcounter{errorcontextlines}{25}
 
-%\RequirePackage{palatino}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{lastpage}
@@ -47,6 +46,16 @@
 \RequirePackage{verbatim}
 \RequirePackage{booktabs}
 \RequirePackage{ifthen}
+
+%%% Set the default typeface via a package.
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathpazo}
+\RequirePackage[scaled=.90]{helvet}
+
+%%% Use Latin Modern Typewriter as the monospace typeface.
+\renewcommand{\ttdefault}{lmtt}
+
+
 
 
 %%% Define a command for the advisor's name.
