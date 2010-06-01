@@ -39,7 +39,19 @@
 
 
 %%% Other packages needed by your document may be loaded here.
-%%% with the \usepackage{} command.
+%%% with the \usepackage{} command.  If you choose to load
+%%% additional packages, make sure that they appear *before* the
+%%% line loading hyperref; hyperref changes pieces of other
+%%% packages, so it's important that it be loaded last.
+
+
+%%% Load all other packages before this point.
+
+%%% Load hyperref.
+\usepackage[breaklinks=true,
+  bookmarks,
+  pdfpagemode=UseOutlines,
+  pdfpagelayout=SinglePage]{hyperref}
 
 
 %%% As you may have guessed, LaTeX's comment character is the percent
