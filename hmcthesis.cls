@@ -65,7 +65,7 @@
 
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
-\RequirePackage[psamsfonts]{amsfonts}
+\RequirePackage{amsfonts}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}
 \RequirePackage{booktabs}         % Publication-quality tables.
@@ -73,27 +73,27 @@
 \RequirePackage{ifthen}
 \RequirePackage{graphics}
 \RequirePackage{fancyhdr}
-\usepackage[%
+\RequirePackage{caption}
+\captionsetup{
   font={small,sf}                % Use small, sans-serif text.
   ,labelfont=bf                  % Make label bold.
   ,labelsep=quad                 % Separate label from text with a space.
   ,justification=justified       % Justify caption.
   ,margin=2em
-  ]{caption}
+}
 
 
 \AtBeginDocument{
-%%% Define caption appearance for subfigures (requires subfig
-%%% package to be loaded in the document preamble).
-\captionsetup[subfloat]{
-  font={small,sf}               % Use small, sans-serif font.
-  ,labelformat=simple           % No parentheses on labels.
-  ,labelsep=period              % Period and space separator.
-  ,justification=justified
-  ,format=hang
-  ,margin=0pt
-}
-
+  %%% Define caption appearance for subfigures (requires subfig
+  %%% package to be loaded in the document preamble).
+  \captionsetup[subfloat]{
+    font={small,sf}               % Use small, sans-serif font.
+    ,labelformat=simple           % No parentheses on labels.
+    ,labelsep=period              % Period and space separator.
+    ,justification=justified
+    ,format=hang
+    ,margin=0pt
+  }
 }
 
 
