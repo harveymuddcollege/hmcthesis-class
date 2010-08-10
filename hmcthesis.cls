@@ -63,6 +63,10 @@
 %%% Load the book class with some default options.
 \LoadClass[11pt,openright]{book}
 
+%%% Include local configuration file, if any.
+\InputIfFileExists{hmcthesis.cfg}{}{}
+
+
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
@@ -72,6 +76,7 @@
 \RequirePackage{natbib}           % Better bibliography handling.
 \RequirePackage{ifthen}
 \RequirePackage{graphics}
+\RequirePackage[obeyspaces,spaces]{url}
 \RequirePackage{fancyhdr}
 \RequirePackage{caption}
 \captionsetup{
@@ -105,9 +110,8 @@
 %%% Use Latin Modern Typewriter as the monospace typeface.
 \renewcommand{\ttdefault}{lmtt}
 
-
-%%% Include local configuration file, if any.
-\InputIfFileExists{hmcthesis.cfg}{}{}
+%%% Set URLs in sans-serif type.
+\AtBeginDocument{\urlstyle{sf}}
 
 %%% Set some defaults for bibliographic punctuation used by natbib.sty.
 \bibpunct[:~]{(}{)}{;}{a}{,}{,~} 
