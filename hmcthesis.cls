@@ -91,7 +91,7 @@
 \AtBeginDocument{
   %%% Define caption appearance for subfigures (requires subfig
   %%% package to be loaded in the document preamble).
-  \captionsetup[subfloat]{
+  \captionsetup*[subfloat]{
     font={small,sf}               % Use small, sans-serif font.
     ,labelformat=simple           % No parentheses on labels.
     ,labelsep=period              % Period and space separator.
