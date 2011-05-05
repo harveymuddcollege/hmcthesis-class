@@ -4,7 +4,7 @@
 %
 % $Id$
 %
-% Copyright (C) 2003--2010
+% Copyright (C) 2003--2011
 %
 % Claire Connelly <cmc@math.hmc.edu>
 %              and 
@@ -40,7 +40,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2010/08/23 HMC Math Thesis class, version 3.4]
+\ProvidesClass{hmcthesis}[2011/05/04 HMC Math Thesis class, version 3.5]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
@@ -52,12 +52,10 @@
 %\ExecuteOptions{}
 \newif\if@sigpage
 \@sigpagefalse
+\newif\if@cclicense
+\DeclareOption{cclicense}{\@cclicensetrue}
 \DeclareOption{sigpage}{\@sigpagetrue}
 \ProcessOptions
-
-
-\ProcessOptions\relax %% <-- Change this if we decide to declare some
-                      %%     options for this class!
 
 
 %%% Load the book class with some default options.
@@ -270,15 +268,38 @@
 %%% Define the text to appear on the copyright page.
 \newcommand{\@defaultCopyrightText}{%
 
-The author grants Harvey Mudd College the nonexclusive right to make
-this work available for noncommercial, educational purposes, provided
-that this copyright statement appears on the reproduced materials and
-notice is given that the copying is by permission of the author.  To
-disseminate otherwise or to republish requires written permission from
-the author.  }
+  The author grants Harvey Mudd College and the Claremont Colleges
+  Library the nonexclusive right to make this work available for
+  noncommercial, educational purposes, provided that this
+  copyright statement appears on the reproduced materials and
+  notice is given that the copying is by permission of the author.
+  To disseminate otherwise or to republish requires written
+  permission from the author.  }
+
+\if@cclicense
+\RequirePackage{ccicons}
+\newcommand{\@ccCopyrightText}{%
+
+  \@defaultCopyrightText
+
+  {\Huge\ccbyncsa}
+
+  The author is also making this work available under a Creative
+  Commons Attribution--NonCommercial--ShareAlike license.
+
+  See \url{http://creativecommons.org/licenses/by-nc-sa/3.0/} for
+  a summary of the rights given, withheld, and reserved by this
+  license and
+  \url{http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode}
+  for the full legal details.
+}
+\fi
 
 \newcommand{\copyrighttext}[1]{\gdef\@copyrighttext{#1}}
 \def\@copyrighttext{\@defaultCopyrightText}
+\if@cclicense
+\renewcommand{\@copyrighttext}{\@ccCopyrightText}
+\else\fi
 
 
 %%% Print only the chapter and section number in the Table of Contents.
