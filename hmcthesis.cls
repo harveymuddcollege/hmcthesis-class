@@ -76,7 +76,7 @@
 \RequirePackage{graphics}
 \RequirePackage[obeyspaces,spaces]{url}
 \RequirePackage{fancyhdr}
-\RequirePackage{caption}
+\RequirePackage{caption}[2010/01/09]
 \captionsetup{
   font={small,sf}                % Use small, sans-serif text.
   ,labelfont=bf                  % Make label bold.
