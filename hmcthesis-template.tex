@@ -5,8 +5,11 @@
 %%%
 %%%  Tag: $Name$
 
-%%% Copyright (C) 2004-2005 Claire M. Connelly and 
-%%% the Department of Mathematics, Harvey Mudd College.
+
+%%% !!! HMC STUDENTS SHOULD REMOVE THE FOLLOWING COPYRIGHT NOTICE FROM
+%%% !!! FINAL SUBMISSIONS.
+
+%%% Copyright (C) 2004-2010 Department of Mathematics, Harvey Mudd College.
 %%%
 %%% This file is part of the sample thesis provided to HMC
 %%% mathematics students and is based on the sample thesis's
@@ -16,6 +19,7 @@
 %%% distribution, for information about distribution and modification
 %%% of the document and its components.
 
+%%% !!! END COPYRIGHT NOTICE.
 
 %%% Preamble.
 
@@ -39,7 +43,21 @@
 
 
 %%% Other packages needed by your document may be loaded here.
-%%% with the \usepackage{} command.
+%%% with the \usepackage{} command.  If you choose to load
+%%% additional packages, make sure that they appear *before* the
+%%% line loading hyperref; hyperref changes pieces of other
+%%% packages, so it's important that it be loaded last.
+
+% \usepackage{graphicx}           % More control over graphic inclusion.
+% \usepackage{amsthm}             % AMS theorem styles
+
+%%% Load all other packages before this point.
+
+%%% Load hyperref.
+\usepackage[breaklinks=true,
+  bookmarks,
+  pdfpagemode=UseOutlines,
+  pdfpagelayout=SinglePage]{hyperref}
 
 
 %%% As you may have guessed, LaTeX's comment character is the percent
@@ -86,10 +104,14 @@
 
 %% What is your faculty advisor's name?  (Again, separate names with
 %% \and, if necessary.)
+%% 
+%% Don't include titles (e.g., ``Prof.'', ``Dr.'').
 \advisor{Advisor One \and Advisor Two}
 
 %% Second reader's name?  If you have a third or fourth reader, add
 %%% their names here, separated by the \and command.
+%% 
+%% Don't include titles (e.g., ``Prof.'', ``Dr.'').
 \reader{Second Reader}
 
 %% The year in which you are submitting your thesis.
@@ -120,7 +142,8 @@
 %%% Some theorem-like command definitions.
 
 %%% The \newtheorem command comes from the amsthm package.  That
-%%% package is loaded by the class file.
+%%% package is *not* loaded by the class file, so if you choose
+%%% to use these commands, you'll need to load the package above.
 
 % \newtheorem{thm}{Theorem}[chapter]
 % \newtheorem{lem}{Lemma}[chapter]
@@ -319,14 +342,14 @@
 %%% doing searches.  (On most modern Unices, ``locate .bst'' will give
 %%% you an idea of what's available.)
 
-%%% Here we're using the plainnat bibliography style, which is
-%%% defined in a file called plainnat.bst somewhere in one of the
-%%% TEXMF trees on your system.
+%%% For math Clinic reports and theses, we use the hmcmath
+%%% bibliography style.
 
-\bibliographystyle{plainnat}
+\bibliographystyle{hmcmath}
 
-%%% plainnat is meant for use with the natbib bibliography and
-%%% citation package, which we highly recommend.
+%%% The hmcmath bibliographic style is meant for use with the
+%%% natbib bibliography and citation package, which is loaded by
+%%% the class file.
 
 %%% The particular bibliography data file or files that you want to
 %%% use are specified with the \bibliography file.  Multiple files are

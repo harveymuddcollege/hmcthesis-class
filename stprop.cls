@@ -3,7 +3,8 @@
 % 
 %   stprop.cls -- A LaTeX class for writing senior thesis proposals
 
-%   Copyright (C) 2003  C.M. Connelly
+%   Copyright (C) 2003-2010  Department of Mathematics, Harvey
+%   Mudd College.
 %
 %   This program is free software; you can redistribute it and/or
 %   modify it under the terms of the GNU General Public License as
@@ -29,7 +30,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{stprop}[2003/05/29 Senior Thesis Proposal Class]
+\ProvidesClass{stprop}[2010/08/23 Senior Thesis Proposal Class, version 3.4]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax %% <-- fix if we decide to declare some options!
 \LoadClass[11pt]{article}
@@ -38,7 +39,6 @@
 %% Get some useful information about errors.
 \setcounter{errorcontextlines}{25}
 
-%\RequirePackage{palatino}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{lastpage}
@@ -47,6 +47,16 @@
 \RequirePackage{verbatim}
 \RequirePackage{booktabs}
 \RequirePackage{ifthen}
+
+%%% Set the default typeface via a package.
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathpazo}
+\RequirePackage[scaled=.90]{helvet}
+
+%%% Use Latin Modern Typewriter as the monospace typeface.
+\renewcommand{\ttdefault}{lmtt}
+
+
 
 
 %%% Define a command for the advisor's name.

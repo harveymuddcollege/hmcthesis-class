@@ -4,7 +4,7 @@
 %
 % $Id$
 %
-% Copyright (C) 2003 - 2005
+% Copyright (C) 2003--2011
 %
 % Claire Connelly <cmc@math.hmc.edu>
 %              and 
@@ -40,7 +40,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2005/04/13 HMC Math Thesis class]
+\ProvidesClass{hmcthesis}[2011/05/04 HMC Math Thesis class, version 3.5]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
@@ -52,35 +52,67 @@
 %\ExecuteOptions{}
 \newif\if@sigpage
 \@sigpagefalse
+\newif\if@cclicense
+\DeclareOption{cclicense}{\@cclicensetrue}
 \DeclareOption{sigpage}{\@sigpagetrue}
 \ProcessOptions
-
-
-\ProcessOptions\relax %% <-- Change this if we decide to declare some
-                      %%     options for this class!
 
 
 %%% Load the book class with some default options.
 \LoadClass[11pt,openright]{book}
 
+%%% Include local configuration file, if any.
+\InputIfFileExists{hmcthesis.cfg}{}{}
+
+
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
-\RequirePackage[psamsfonts]{amsfonts}
-\RequirePackage{cmtty}
+\RequirePackage{amsfonts}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}
-\RequirePackage{booktabs}
+\RequirePackage{booktabs}         % Publication-quality tables.
+\RequirePackage{natbib}           % Better bibliography handling.
 \RequirePackage{ifthen}
 \RequirePackage{graphics}
+\RequirePackage[obeyspaces,spaces]{url}
 \RequirePackage{fancyhdr}
+\RequirePackage{caption}[2010/01/09]
+\captionsetup{
+  font={small,sf}                % Use small, sans-serif text.
+  ,labelfont=bf                  % Make label bold.
+  ,labelsep=quad                 % Separate label from text with a space.
+  ,justification=justified       % Justify caption.
+  ,margin=2em
+}
+
+
+\AtBeginDocument{
+  %%% Define caption appearance for subfigures (requires subfig
+  %%% package to be loaded in the document preamble).
+  \captionsetup*[subfloat]{
+    font={small,sf}               % Use small, sans-serif font.
+    ,labelformat=simple           % No parentheses on labels.
+    ,labelsep=period              % Period and space separator.
+    ,justification=justified
+    ,format=hang
+    ,margin=0pt
+  }
+}
 
 
 %%% Set the default typeface via a package.
+\RequirePackage[T1]{fontenc}
 \RequirePackage{mathpazo}
-\RequirePackage[scaled=.95]{helvet}
+\RequirePackage[scaled=.90]{helvet}
 
-%%% Include local configuration file, if any.
-\InputIfFileExists{hmcthesis.cfg}{}{}
+%%% Use Latin Modern Typewriter as the monospace typeface.
+\renewcommand{\ttdefault}{lmtt}
+
+%%% Set URLs in sans-serif type.
+\AtBeginDocument{\urlstyle{sf}}
+
+%%% Set some defaults for bibliographic punctuation used by natbib.sty.
+\bibpunct[:~]{(}{)}{;}{a}{,}{,~} 
 
 
 %%% Define some environments.
@@ -236,15 +268,46 @@
 %%% Define the text to appear on the copyright page.
 \newcommand{\@defaultCopyrightText}{%
 
-The author grants Harvey Mudd College the nonexclusive right to make
-this work available for noncommercial, educational purposes, provided
-that this copyright statement appears on the reproduced materials and
-notice is given that the copying is by permission of the author.  To
-disseminate otherwise or to republish requires written permission from
-the author.  }
+  The author grants Harvey Mudd College and the Claremont Colleges
+  Library the nonexclusive right to make this work available for
+  noncommercial, educational purposes, provided that this
+  copyright statement appears on the reproduced materials and
+  notice is given that the copying is by permission of the author.
+  To disseminate otherwise or to republish requires written
+  permission from the author.  }
+
+\if@cclicense
+\RequirePackage{ccicons}
+\newcommand{\@ccCopyrightText}{%
+
+  \@defaultCopyrightText
+
+  {\Huge\ccbyncsa}
+
+  The author is also making this work available under a Creative
+  Commons Attribution--NonCommercial--ShareAlike license.
+
+  See \url{http://creativecommons.org/licenses/by-nc-sa/3.0/} for
+  a summary of the rights given, withheld, and reserved by this
+  license and
+  \url{http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode}
+  for the full legal details.
+}
+\fi
 
 \newcommand{\copyrighttext}[1]{\gdef\@copyrighttext{#1}}
 \def\@copyrighttext{\@defaultCopyrightText}
+\if@cclicense
+\renewcommand{\@copyrighttext}{\@ccCopyrightText}
+\else\fi
+
+
+%%% Make \eqref behave the way we want.
+\renewcommand{\eqref}[1]{Equation~\ref{#1}}
+
+
+%%% Make \eqref behave the way we want.
+\renewcommand{\eqref}[1]{Equation~\ref{#1}}
 
 
 %%% Print only the chapter and section number in the Table of Contents.
@@ -266,13 +329,6 @@ the author.  }
     \@starttoc{toc}%
     \if@restonecol\twocolumn\fi
     }
-
-
-
-
-%%% Print only the chapter and section number in the Table of Contents.
-
-\setcounter{tocdepth}{1}
 
 
 %%% Set Metafont font.  If logo not available, use the second form.
