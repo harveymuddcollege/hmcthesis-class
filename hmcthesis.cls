@@ -323,13 +323,6 @@
     }
 
 
-
-
-%%% Print only the chapter and section number in the Table of Contents.
-
-\setcounter{tocdepth}{1}
-
-
 %%% Set Metafont font.  If logo not available, use the second form.
 %%%
 %%% \font\mffont=logosl10 scaled\magstep1
