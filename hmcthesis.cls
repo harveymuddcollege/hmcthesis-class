@@ -302,6 +302,10 @@
 \else\fi
 
 
+%%% Make \eqref behave the way we want.
+\renewcommand{\eqref}[1]{Equation~\ref{#1}}
+
+
 %%% Print only the chapter and section number in the Table of Contents.
 
 \setcounter{tocdepth}{1}
