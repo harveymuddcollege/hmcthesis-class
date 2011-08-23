@@ -48,6 +48,8 @@
 %%% line loading hyperref; hyperref changes pieces of other
 %%% packages, so it's important that it be loaded last.
 
+% \usepackage{graphicx}           % More control over graphic inclusion.
+% \usepackage{amsthm}             % AMS theorem styles
 
 %%% Load all other packages before this point.
 
@@ -140,7 +142,8 @@
 %%% Some theorem-like command definitions.
 
 %%% The \newtheorem command comes from the amsthm package.  That
-%%% package is loaded by the class file.
+%%% package is *not* loaded by the class file, so if you choose
+%%% to use these commands, you'll need to load the package above.
 
 % \newtheorem{thm}{Theorem}[chapter]
 % \newtheorem{lem}{Lemma}[chapter]
