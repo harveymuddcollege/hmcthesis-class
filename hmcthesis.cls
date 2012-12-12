@@ -97,6 +97,7 @@
     ,format=hang
     ,margin=0pt
   }
+  \providecommand{\phantomsection}{\relax} % Provide for missing hyperref.
 }
 
 
@@ -387,10 +388,11 @@
                 \fi
                 \columnseprule \z@
                 \columnsep 35\p@
-                \twocolumn[\@makeschapterhead{\indexname}]%
+                \twocolumn[\@makeschapterhead{\indexname}%
                 \@mkboth{\indexname}%
                         {\indexname}%
-                        \addcontentsline{toc}{chapter}{\indexname}%
+                \phantomsection%
+                \addcontentsline{toc}{chapter}{\indexname}]%
                 \thispagestyle{plain}\parindent\z@
                 \parskip\z@ \@plus .3\p@\relax
                 \let\item\@idxitem}
