@@ -68,6 +68,7 @@
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
+\RequirePackage{calc}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}
 \RequirePackage{booktabs}         % Publication-quality tables.
@@ -185,22 +186,21 @@
       \parindent\z@
       \vspace*{-1in}
       \begin{center}%
-      {\scalebox{0.55}{\includegraphics{hmcseal}}\par}%
-      \vspace{\stretch{1.5}}
-      \if@sigpage
-        \vspace{\stretch{1.5}}
-      \else
-        \vspace{\stretch{3}}
-      \fi
+      % {\scalebox{0.55}{\includegraphics{hmcseal}}\par}%
+      % \vspace{\stretch{1.5}}
+      % \if@sigpage
+      %   \vspace{\stretch{1.5}}
+      % \else
+      %   \vspace{\stretch{3}}
+      % \fi
       {\LARGE \noindent\@title \par}%
       \vskip 2em
       {\Large
         \let\and\par
         \textbf{\@author}
         \par}%
-      \vspace{\stretch{1}}
       \if@sigpage
-        \vspace{\stretch{1}}
+        \vspace{3in}
       \else
         \vspace{\stretch{4}}
       \fi
@@ -212,10 +212,10 @@
         \def\and{\!, Reader\par\@sigline}
         \@sigline\@reader, Reader\par}
       \vspace{\stretch{3}}
-    {\large \@thesismonth, \@thesisyear\\[1em]
-\scalebox{0.55}{\includegraphics{hmclogo}}\\[0.5ex]%
-                                % Harvey Mudd College\\[0.5ex]%
-      Department of~\@department\par}%
+      {\large \scalebox{0.25}{\includegraphics{hmclogo}}\\[2ex]
+        \raisebox{36bp-0.5\depth}{\textsf{\textbf{Department of \@department}}}}\par%
+      \vspace{8ex}
+    {\large \@thesismonth, \@thesisyear\\[1em]}
 \end{center}
                                 %\par
     \@thanks
