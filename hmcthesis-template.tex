@@ -9,7 +9,7 @@
 %%% !!! HMC STUDENTS SHOULD REMOVE THE FOLLOWING COPYRIGHT NOTICE FROM
 %%% !!! FINAL SUBMISSIONS.
 
-%%% Copyright (C) 2004-2010 Department of Mathematics, Harvey Mudd College.
+%%% Copyright (C) 2004-2015 Department of Mathematics, Harvey Mudd College.
 %%%
 %%% This file is part of the sample thesis provided to HMC
 %%% mathematics students and is based on the sample thesis's
@@ -31,10 +31,32 @@
 %%% affect the way that the document is laid out, typeset, or supply
 %%% additional commands or environments.
 
-\documentclass{hmcthesis}
 
-%%% Use the sigpage document-class option to generate a signature
-%%% page for your thesis.
+%%% Theses use the hmcthesis document class, which should be
+%%% located somewhere in TeX's search path.
+\documentclass[<<department>>]{hmcthesis}
+
+%%% You must set a document-class option to tell the class what
+%%% department your report will be for!  Replace the string
+%%% <<document>> with the name of a department, where supported
+%%% departments are
+%%%
+%%%    biology
+%%%    computer-science
+%%%    chemistry
+%%%    engineering
+%%%    mathematics
+%%%    physics
+
+
+%%% At the end of the year, add the sigpage document-class
+%%% option to generate a signature page for your thesis, as in
+
+%%% \documentclass[sigpage,<<department>>]{hmcthesis}
+
+%%% Note that you still have to provide the department name.  And
+%%% for your final submission, you should only have the department
+%%% document-class option.
 
 
 %%% The preamble can also be used to define your own commands and
@@ -76,9 +98,6 @@
 %%% define the appearance of a document, and include a variety of
 %%% structural commands.
 
-%%% Clinic reports use the clinic class, which should be located
-%%% somewhere in TeX's search path.
-
 %%% This optional command provides additional context around an error.
 %%% It can be helpful when tracking down a problem. 
 %\setcounter{errorcontextlines}{1000}
@@ -115,10 +134,10 @@
 \reader{Second Reader}
 
 %% The year in which you are submitting your thesis.
-\thesisyear{2006} 
+\thesisyear{2016} 
 
 %% Optional: The month in which you are submitting your thesis (if
-%% it's a month other than May).
+%% it's a month other than May).  For example,
 % \thesismonth{December} 
 
 %%% End of information section.
@@ -383,5 +402,3 @@
 
 
 \end{document}
-
-

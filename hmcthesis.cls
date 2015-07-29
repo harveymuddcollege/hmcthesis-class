@@ -2,9 +2,7 @@
 % 
 % hmcthesis.cls -- Harvey Mudd College Senior Thesis LaTeX Class File
 %
-% $Id$
-%
-% Copyright (C) 2003--2011
+% Copyright (C) 2003--2015
 %
 % Claire Connelly <cmc@math.hmc.edu>
 %              and 
@@ -40,7 +38,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2011/08/25 HMC Math Thesis class, version 3.6]
+\ProvidesClass{hmcthesis}[2015/07/29 HMC Math Thesis class, version 5.0]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
@@ -55,14 +53,72 @@
 \newif\if@cclicense
 \DeclareOption{cclicense}{\@cclicensetrue}
 \DeclareOption{sigpage}{\@sigpagetrue}
+
+
+% Department for report.
+\newif\ifbio@dept
+\bio@deptfalse
+\DeclareOption{biology}{%
+  \bio@depttrue
+}
+\newif\ifcs@dept
+\cs@deptfalse
+\DeclareOption{computer-science}{%
+  \cs@depttrue
+}
+\DeclareOption{cs}{%
+  \cs@depttrue
+}
+\newif\ifchem@dept
+\chem@deptfalse
+\DeclareOption{chemistry}{%
+  \chem@depttrue
+}
+\newif\ifeng@dept
+\eng@deptfalse
+\DeclareOption{engineering}{%
+  \eng@depttrue
+}
+\newif\ifmath@dept
+\math@deptfalse
+\DeclareOption{math}{%
+  \math@depttrue
+}
+\DeclareOption{mathematics}{%
+  \math@depttrue
+}
+\newif\ifphysics@dept
+\physics@deptfalse
+\DeclareOption{physics}{%
+  \physics@depttrue
+}
+
+\ExecuteOptions{}
 \ProcessOptions
 
 
 %%% Load the book class with some default options.
 \LoadClass[11pt,openright]{book}
 
-%%% Include local configuration file, if any.
-\InputIfFileExists{hmcthesis.cfg}{}{}
+
+%%% We no longer use an external configuration file; warn if we
+%%% find one.
+\IfFileExists{hmcthesis.cfg}{%
+  \ClassError{hmcthesis}{Configuration files are no longer\MessageBreak
+    supported as of release 5.0}%
+{As of release 5.0, this class no longer supports the use of\MessageBreak
+a configuration file to specify the department name.\MessageBreak
+\MessageBreak
+Delete the configuration file and add the name of your\MessageBreak
+department (e.g., mathematics, computerscience,\MessageBreak
+engineering, physics) as a document-class option.\MessageBreak
+\MessageBreak
+See the template file and documentation for more information.\MessageBreak
+\MessageBreak
+You can press Return or q to continue, but you will hit another\MessageBreak
+warning if you haven't specified a valid departmental\MessageBreak
+document-class option.
+{}}}
 
 
 %%% Load some required/very useful packages.
@@ -419,3 +475,33 @@
 
 \raggedbottom
 
+%% Set the department name.
+\ifbio@dept
+  \AtEndOfClass{\department{Biology}}
+\else
+  \ifcs@dept
+    \AtEndOfClass{\department{Computer Science}}
+  \else
+    \ifchem@dept
+      \AtEndOfClass{\department{Chemistry}}
+    \else
+      \ifeng@dept
+        \AtEndOfClass{\department{Engineering}}
+      \else
+        \ifmath@dept
+          \AtEndOfClass{\department{Mathematics}}
+        \else
+          \ifphysics@dept
+            \AtEndOfClass{\department{Physics}}
+          \else
+            \AtEndOfClass{\department{\textbf{\huge no department document-class option found}}}
+            \ClassError{hmcthesis}{No departmental document-class option found}%
+            {See the template file and documentation for more information}
+          \fi
+        \fi
+      \fi
+    \fi
+  \fi
+\fi
+
+\endinput
