@@ -38,7 +38,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2015/07/29 HMC Math Thesis class, version 5.0]
+\ProvidesClass{hmcthesis}[2015/08/24 HMC Math Thesis class, version 5.0]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
@@ -157,13 +157,13 @@ document-class option.
 }
 
 
-%%% Set the default typeface via a package.
-\RequirePackage[T1]{fontenc}
-\RequirePackage{mathpazo}
-\RequirePackage[scaled=.90]{helvet}
-
-%%% Use Latin Modern Typewriter as the monospace typeface.
-\renewcommand{\ttdefault}{lmtt}
+%%% Set typefaces.
+\RequirePackage[full]{textcomp}
+\RequirePackage{newpxtext}
+\RequirePackage[scaled=0.98]{sourcesanspro} % sans-serif
+\RequirePackage[varqu,varl]{inconsolata} % sans-serif typewriter
+\RequirePackage[bigdelims,vvarbb]{newpxmath} % bb from STIX
+\RequirePackage[cal=boondoxo]{mathalfa} % mathcal
 
 %%% Set URLs in sans-serif type.
 \AtBeginDocument{\urlstyle{sf}}
