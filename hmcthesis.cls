@@ -287,7 +287,7 @@ document-class option.
   \setlength{\parindent}{0pt}
   \setlength{\parskip}{1em}
 
-  Copyright \copyright~\@thesisyear{} \@author.
+  Copyright \textcopyright~\@thesisyear{} \@author.
 
   \smallskip
 
