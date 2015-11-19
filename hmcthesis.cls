@@ -47,7 +47,7 @@
 %%% Declare and set some options.
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
-%\ExecuteOptions{}
+
 \newif\if@sigpage
 \@sigpagefalse
 \newif\if@cclicense
