@@ -93,6 +93,16 @@
   \physics@depttrue
 }
 
+% Load amsthm by default.  We need to load it before the newpxmath
+% font package, as it defines or redefines some commands provided
+% by amsthm.  We provide a "noamsthm" option to not load amsthm.
+
+\newif\if@amsthm
+\@amsthmtrue
+\DeclareOption{noamsthm}{%
+  \@amsthmfalse
+}
+
 \ExecuteOptions{}
 \ProcessOptions
 
@@ -124,6 +134,9 @@ document-class option.
 %%% Load some required/very useful packages.
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
+\if@amsthm
+  \RequirePackage{amsthm}
+\fi
 \RequirePackage{calc}
 \RequirePackage{xspace}
 \RequirePackage{verbatim}

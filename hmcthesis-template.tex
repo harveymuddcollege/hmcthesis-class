@@ -49,20 +49,20 @@
 %%%    physics
 
 
-%%% At the end of the year, add the sigpage document-class
-%%% option to generate a signature page for your thesis, as in
+%%% Additional document-class options.
+
+%%% The "sigpage" document-class option generates a signature page
+%%% for your thesis, as in
 
 %%% \documentclass[sigpage,<<department>>]{hmcthesis}
 
-%%% Note that you still have to provide the department name.  And
-%%% for your final submission, you should only have the department
-%%% document-class option.
+%%% The "noamsthm" document-class option stops the amsthm package
+%%% from being loaded by the class.  This option is provided in
+%%% case you prefer to use some other package to format your
+%%% theorems, lemmas, and so on.
 
 
-%%% The preamble can also be used to define your own commands and
-%%% environments, set some constants that will be used throughout your
-%%% document, and so on.
-
+%%% Additional packages.
 
 %%% Other packages needed by your document may be loaded here.
 %%% with the \usepackage{} command.  If you choose to load
@@ -70,8 +70,19 @@
 %%% line loading hyperref; hyperref changes pieces of other
 %%% packages, so it's important that it be loaded last.
 
+
+%%% The class file loads the following packages -- there is no
+%%% reason to load any of these packages yourself (and doing so
+%%% may cause problems):
+%%%
+%%% amsmath, amsfonts, amsthm (unless you specify "noamsmath" in
+%%% the document-class options), booktabs, calc, caption, ccicons,
+%%% fancyhdr, graphics, ifthen, inconsolata, mathalfa, natbib,
+%%% newpxmath, newpxtext, sourcesanspro, textcomp, url, verbatim,
+%%% xspace.
+
 % \usepackage{graphicx}           % More control over graphic inclusion.
-% \usepackage{amsthm}             % AMS theorem styles
+
 
 %%% Load all other packages before this point.
 
@@ -80,6 +91,14 @@
   bookmarks,
   pdfpagemode=UseOutlines,
   pdfpagelayout=SinglePage]{hyperref}
+
+
+%%% Your own commands and environments.
+
+%%% The preamble can also be used to define your own commands and
+%%% environments, set some constants that will be used throughout your
+%%% document, and so on.
+
 
 
 %%% As you may have guessed, LaTeX's comment character is the percent
