@@ -159,11 +159,12 @@ document-class option.
 
 %%% Set typefaces.
 \RequirePackage[full]{textcomp}
-\RequirePackage{newpxtext}
+\RequirePackage[theoremfont]{newpxtext}
 \RequirePackage[scaled=0.98]{sourcesanspro} % sans-serif
 \RequirePackage[varqu,varl]{inconsolata} % sans-serif typewriter
 \RequirePackage[bigdelims,vvarbb]{newpxmath} % bb from STIX
-\RequirePackage[cal=boondoxo]{mathalfa} % mathcal
+\RequirePackage[scr=rsfso]{mathalfa} % mathcal
+\linespread{1.025}
 
 %%% Set URLs in sans-serif type.
 \AtBeginDocument{\urlstyle{sf}}
