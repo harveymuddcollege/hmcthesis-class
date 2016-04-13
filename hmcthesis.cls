@@ -113,7 +113,7 @@
 
 %%% We no longer use an external configuration file; warn if we
 %%% find one.
-\IfFileExists{hmcthesis.cfg}{%
+\IfFileExists{./hmcthesis.cfg}{%
   \ClassError{hmcthesis}{Configuration files are no longer\MessageBreak
     supported as of release 5.0}%
 {As of release 5.0, this class no longer supports the use of\MessageBreak
