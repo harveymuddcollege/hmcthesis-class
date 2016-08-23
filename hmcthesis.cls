@@ -38,7 +38,7 @@
 %%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hmcthesis}[2015/11/18 HMC Math Thesis class, version 5.1]
+\ProvidesClass{hmcthesis}[2016/08/23 HMC Math Thesis class, version 6.0]
 
 %%% Get some useful information when errors occur.
 \setcounter{errorcontextlines}{25}
